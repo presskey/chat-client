@@ -10,11 +10,15 @@ class Chat extends React.Component {
     };
   }
 
+  handleMessageSubmit(message) {
+    this.setState((state) => { messages: state.messages.push(message) })
+  }
+
   render() {
     return (
       <div>
         <MessageList messages={this.state.messages} />
-        <MessageForm />
+        <MessageForm onMessageSubmit={this.handleMessageSubmit.bind(this)} />
       </div>
     );
   }
@@ -31,10 +35,20 @@ class MessageList extends React.Component {
 }
 
 class MessageForm extends React.Component {
+  handleSubmit(e) {
+    e.preventDefault();
+
+    let text = React.findDOMNode(this.refs.text).value.trim();
+    if (!text) { return; }
+
+    this.props.onMessageSubmit({text: text});
+    return;
+  }
+
   render() {
     return (
-      <form>
-        <input type="text" placeholder="Type a message here" />
+      <form onSubmit={this.handleSubmit.bind(this)}>
+        <input type="text" placeholder="Type a message here" ref="text" />
         <input type="submit" value="Send" />
       </form>
     );
