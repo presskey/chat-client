@@ -1,8 +1,19 @@
 class Chat extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      messages: [
+        {text: 'message1'},
+        {text: 'message2'},
+        {text: 'message3'}
+      ]
+    };
+  }
+
   render() {
     return (
       <div>
-        <MessageList messages={this.props.data} />
+        <MessageList messages={this.state.messages} />
         <MessageForm />
       </div>
     );
@@ -36,13 +47,7 @@ class Message extends React.Component {
   }
 }
 
-let data = [
-  {text: 'message1'},
-  {text: 'message2'},
-  {text: 'message3'}
-];
-
 React.render(
-  <Chat data={data} />,
+  <Chat />,
   document.getElementById('chat')
 );
