@@ -2,7 +2,7 @@ class Chat extends React.Component {
   render() {
     return (
       <div>
-        <MessageList />
+        <MessageList messages={this.props.data} />
         <MessageForm />
       </div>
     );
@@ -11,13 +11,11 @@ class Chat extends React.Component {
 
 class MessageList extends React.Component {
   render() {
-    return (
-      <ul>
-        <Message text="message1" />
-        <Message text="message2" />
-        <Message text="message3" />
-      </ul>
+    let messageNodes = this.props.messages.map(message =>
+      <Message text={message.text} />
     );
+
+    return <ul>{messageNodes}</ul>;
   }
 }
 
@@ -38,7 +36,13 @@ class Message extends React.Component {
   }
 }
 
+let data = [
+  {text: 'message1'},
+  {text: 'message2'},
+  {text: 'message3'}
+];
+
 React.render(
-  <Chat />,
+  <Chat data={data} />,
   document.getElementById('chat')
 );
