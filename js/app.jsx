@@ -42,6 +42,7 @@ class MessageForm extends React.Component {
     if (!text) { return; }
 
     this.props.onMessageSubmit({text: text});
+    React.findDOMNode(this.refs.text).value = '';
     return;
   }
 
