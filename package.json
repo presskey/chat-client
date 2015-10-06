@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "name": "chat-client",
+  "description": "Simple Chat Client",
+  "author": "presskey",
+  "license": "MIT"
+}
