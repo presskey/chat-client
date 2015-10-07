@@ -12,6 +12,7 @@
     "webpack-dev-server": "^1.12.0"
   },
   "dependencies": {
+    "faye": "^1.1.2",
     "http-server": "^0.8.5",
     "react": "^0.13.3"
   },
